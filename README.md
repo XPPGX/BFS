@@ -1,1 +1,1 @@
-# Parallel-BFS
+# BFS
