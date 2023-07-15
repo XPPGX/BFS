@@ -19,7 +19,7 @@ struct qQueue{
 
 struct qQueue* InitqQueue();
 void qPushBack(struct qQueue* _queue, int _val);
-bool qIsFull(struct qQueue* _queue);
+bool qSpaceFull(struct qQueue* _queue);
 bool qIsEmpty(struct qQueue* _queue);
 void showAllElement(struct qQueue* _queue);
 int qPopFront(struct qQueue* _queue);

@@ -12,10 +12,10 @@ struct qQueue* InitqQueue(){
 }
 
 void qPushBack(struct qQueue* _queue, int _val){
-    if(qIsFull(_queue)){
-
+    if(qSpaceFull(_queue)){
+        
         #ifdef _DEBUG_
-        printf("Q is full, queue->rear = %d, queue->front = %d\n", _queue->rear, _queue->front);
+        printf("Q is full, queue->front = %d, queue->rear = %d\n", _queue->front, _queue->rear);
         #endif
 
         _queue->size = _queue->size * 2;
@@ -23,6 +23,10 @@ void qPushBack(struct qQueue* _queue, int _val){
         memcpy(newSpace, (_queue->dataArr) + _queue->front,  sizeof(int) * (_queue->rear - _queue->front + 1));
         free(_queue->dataArr);
         _queue->dataArr = newSpace;
+
+        //re-assign index
+        _queue->rear = _queue->rear - _queue->front;
+        _queue->front = 0;
     }
     _queue->rear++;
     _queue->dataArr[_queue->rear] = _val;
@@ -32,23 +36,24 @@ void qPushBack(struct qQueue* _queue, int _val){
     #endif
 }
 
-bool qIsFull(struct qQueue* _queue){
+bool qSpaceFull(struct qQueue* _queue){
     return (_queue->rear + 1) == _queue->size;
 }
 
 bool qIsEmpty(struct qQueue* _queue){
-    return (_queue->front + 1) > _queue->rear;
+    return _queue->front > _queue->rear;
 }
+
 void showAllElement(struct qQueue* _queue){
     for(int i = 0 ; i <= _queue->rear ; i ++){
         printf("queue[%d] = %d\n", i, _queue->dataArr[i]);
     }
 }
 
-//這裡要改過
 int qPopFront(struct qQueue* _queue){
     if(qIsEmpty(_queue)){
         printf("Queue is empty\n");
+        return -1;
     }
     _queue->front++;
     return _queue->dataArr[_queue->front - 1];
