@@ -1,9 +1,16 @@
-#ifndef vVec
-#define vVec
+#ifndef COMMON
+#define COMMON
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#endif
+
+//Content
+
+#ifndef vVec
+#define vVec
 
 typedef enum{
     no,

@@ -1,9 +1,16 @@
-#ifndef qQ
-#define qQ
+#ifndef COMMON
+#define COMMON
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#endif
+
+//Content
+
+#ifndef qQ
+#define qQ
 
 typedef enum{
     no,

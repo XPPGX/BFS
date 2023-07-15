@@ -1,5 +1,7 @@
-#include "../Lib/vVector.h"
+#include "../Lib/qQueue/qQueue.h"
+
 
 int main(){
-    printf("hi\n");
+    struct qQueue* queue= InitqQueue();
+    
 }

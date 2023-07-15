@@ -1,3 +1,12 @@
+#ifndef COMMON
+#define COMMON
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#endif
+
 #include "vVector.h"
 
 int main(){
