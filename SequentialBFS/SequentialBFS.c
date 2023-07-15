@@ -1,6 +1,6 @@
 #include "SequentialBFS.h"
 
-#define _DEBUG_
+//#define _DEBUG_
 
 void seqBFS(struct Graph* _graph, int _startNode){
     struct qQueue* queue = InitqQueue();
@@ -32,4 +32,5 @@ void seqBFS(struct Graph* _graph, int _startNode){
         }
     }
     printf("\n");
+    printf("Success : Sequential BFS finished\n");
 }

@@ -14,8 +14,9 @@
 
 int main(int argc, char* argv[]){
     char* datasetPath = argv[1];
+    int startNode = atoi(argv[2]);
     struct Graph* graph = buildGraph(datasetPath);
-    showAdjList(graph);
-    seqBFS(graph, 15);
+    //showAdjList(graph);
+    seqBFS(graph, startNode);
     
 }

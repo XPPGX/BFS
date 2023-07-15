@@ -60,7 +60,7 @@ struct Graph* buildGraph(char* _datasetPath){
         vAppend(graph->vertices[val1].neighbors, val2);
         vAppend(graph->vertices[val2].neighbors, val1);
     }
-    printf("Succ : Build AdjList\n");
+    printf("Success : Build AdjList\n");
     printf("==============================\n");
     printf("dataset = %s\n", _datasetPath);
     printf("nodeNum = %d\n", graph->nodeNum);
