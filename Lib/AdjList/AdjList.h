@@ -7,10 +7,16 @@
 
 #endif
 
+//content
+#ifndef VVECTOR
+#define VVECTOR
 #include "../vVector/vVector.h"
+#endif
 
-#ifndef AdjList
-#define AdjList
+#ifndef FILEREADER
+#define FILEREADER
+#include "../FileReader/FileReader.h"
+#endif
 
 struct adjList{
     struct vVector* neighbors;
@@ -25,4 +31,3 @@ struct Graph{
 
 struct Graph* buildGraph(char* _datasetPath);
 void showAdjList(struct Graph* _graph);
-#endif

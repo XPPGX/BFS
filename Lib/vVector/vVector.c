@@ -1,6 +1,6 @@
 #include "vVector.h"
 
-#define _DEBUG_
+//#define _DEBUG_
 
 struct vVector* InitvVector(){
     struct vVector* vector = (struct vVector*)malloc(sizeof(struct vVector));

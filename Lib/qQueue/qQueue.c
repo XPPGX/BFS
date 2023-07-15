@@ -1,6 +1,6 @@
 #include "qQueue.h"
 
-#define _DEBUG_
+//#define _DEBUG_
 
 struct qQueue* InitqQueue(){
     struct qQueue* queue = (struct qQueue*)malloc(sizeof(struct qQueue));
@@ -44,7 +44,7 @@ bool qIsEmpty(struct qQueue* _queue){
     return _queue->front > _queue->rear;
 }
 
-void showAllElement(struct qQueue* _queue){
+void qShowAllElement(struct qQueue* _queue){
     for(int i = 0 ; i <= _queue->rear ; i ++){
         printf("queue[%d] = %d\n", i, _queue->dataArr[i]);
     }

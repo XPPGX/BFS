@@ -11,4 +11,5 @@
 
 int main(){
     struct Graph* graph = buildGraph("karate.txt");
+    showAdjList(graph);
 }

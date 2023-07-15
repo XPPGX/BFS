@@ -7,15 +7,18 @@
 
 #endif
 
-//Content
 
-#ifndef qQ
-#define qQ
+#ifndef BOOL
+#define BOOL
 
 typedef enum{
     no,
     yes
 }bool;
+
+#endif
+
+//Content
 
 struct qQueue{
     int* dataArr;
@@ -28,6 +31,5 @@ struct qQueue* InitqQueue();
 void qPushBack(struct qQueue* _queue, int _val);
 bool qSpaceFull(struct qQueue* _queue);
 bool qIsEmpty(struct qQueue* _queue);
-void showAllElement(struct qQueue* _queue);
+void qShowAllElement(struct qQueue* _queue);
 int qPopFront(struct qQueue* _queue);
-#endif

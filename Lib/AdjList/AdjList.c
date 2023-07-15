@@ -1,9 +1,8 @@
 #include "AdjList.h"
-#include "../FileReader/FileReader.h"
 
 //default the graph is undirected graph
 
-#define _DEBUG_
+//#define _DEBUG_
 
 struct Graph* buildGraph(char* _datasetPath){
     struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
@@ -61,17 +60,42 @@ struct Graph* buildGraph(char* _datasetPath){
         vAppend(graph->vertices[val1].neighbors, val2);
         vAppend(graph->vertices[val2].neighbors, val1);
     }
+    printf("Succ : Build AdjList\n");
+    printf("==============================\n");
+    printf("dataset = %s\n", _datasetPath);
+    printf("nodeNum = %d\n", graph->nodeNum);
+    printf("edgeNum = %d\n", graph->edgeNum);
+    switch(graph->startAtZero){
+        case no:
+            printf("graph start with 1\n");
+            break;
+        case yes:
+            printf("graph start with 0\n");
+            break;
+    }
+    printf("==============================\n");
+    return graph;
 }
 
 void showAdjList(struct Graph* _graph){
     if(_graph->startAtZero == yes){
+        printf("Graph start at zero\n");
         for(int i = 0 ; i < _graph->nodeNum ; i ++){
-            printf("AA");
+            printf("neighbor[%d] = {", i);
+            for(int neighbor_index = 0 ; neighbor_index <= _graph->vertices[i].neighbors->tail ; neighbor_index++){
+                printf("%d, ", _graph->vertices[i].neighbors->dataArr[neighbor_index]);
+            }
+            printf("}\n");
         }
     }
     else{
+        printf("Graph start at one\n");
         for(int i = 1 ; i < _graph->nodeNum + 1 ; i ++){
-            printf("Hi");
+            printf("neighbor[%d] = {", i);
+            for(int neighbor_index = 0 ; neighbor_index <= _graph->vertices[i].neighbors->tail ; neighbor_index++){
+                printf("%d, ", _graph->vertices[i].neighbors->dataArr[neighbor_index]);
+            }
+            printf("}\n");
         }
     }
 }

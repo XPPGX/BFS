@@ -7,15 +7,17 @@
 
 #endif
 
-//Content
-
-#ifndef vVec
-#define vVec
+#ifndef BOOL
+#define BOOL
 
 typedef enum{
     no,
     yes
 }bool;
+
+#endif
+
+//Content
 
 struct vVector{
     int* dataArr;
@@ -29,4 +31,3 @@ void vShowAllElement(struct vVector* _vec);
 void vAppend(struct vVector* _vec, int _val);
 bool vIsFull(struct vVector* _vec);
 void vShrink(struct vVector* _vec);
-#endif
