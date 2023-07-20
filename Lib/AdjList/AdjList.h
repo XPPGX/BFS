@@ -25,7 +25,7 @@ struct adjList{
 struct Graph{
     int nodeNum;
     int edgeNum;
-    bool startAtZero;
+    int startAtZero;
     struct adjList* vertices;
 };
 

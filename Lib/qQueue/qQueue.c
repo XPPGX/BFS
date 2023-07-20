@@ -36,11 +36,11 @@ void qPushBack(struct qQueue* _queue, int _val){
     #endif
 }
 
-bool qSpaceFull(struct qQueue* _queue){
+int qSpaceFull(struct qQueue* _queue){
     return (_queue->rear + 1) == _queue->size;
 }
 
-bool qIsEmpty(struct qQueue* _queue){
+int qIsEmpty(struct qQueue* _queue){
     return _queue->front > _queue->rear;
 }
 

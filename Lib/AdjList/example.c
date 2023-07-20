@@ -9,7 +9,8 @@
 
 #include "AdjList.h"
 
-int main(){
-    struct Graph* graph = buildGraph("karate.txt");
+int main(int argc, char* argv[]){
+    char* datasetPath = argv[1];
+    struct Graph* graph = buildGraph(datasetPath);
     showAdjList(graph);
 }

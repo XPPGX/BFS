@@ -6,6 +6,8 @@
 #endif
 
 //content
+#define CUDA
+
 #ifndef ADJLIST
 #define ADJLIST
 #include "../AdjList/AdjList.h"
@@ -16,7 +18,7 @@ struct CSR{
     int* csrE;
     int csrVSize;
     int csrESize;
-    bool startAtZero;
+    int startAtZero;
 };
 
 struct CSR* createCSR(struct Graph* _adjlist);

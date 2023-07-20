@@ -5,14 +5,6 @@
 #include <string.h>
 #endif
 
-#ifndef BOOL
-#define BOOL
-typedef enum{
-    no,
-    yes
-}bool;
-#endif
-
 #ifndef ADJLIST
 #define ADJLIST
 #include "../Lib/AdjList/AdjList.h"

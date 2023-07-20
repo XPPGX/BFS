@@ -5,7 +5,7 @@ int main(){
     for(int i = 0 ; i < 10 ; i ++){
         qPushBack(queue, i * 10);
     }
-    showAllElement(queue);
+    qShowAllElement(queue);
     for(int i = 0 ; i < 10 ; i ++){
         printf("Q[%d] = %d\n", i, qPopFront(queue));
     }

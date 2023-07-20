@@ -7,16 +7,6 @@
 
 #endif
 
-#ifndef BOOL
-#define BOOL
-
-typedef enum{
-    no,
-    yes
-}bool;
-
-#endif
-
 //Content
 
 struct vVector{
@@ -29,5 +19,5 @@ struct vVector{
 struct vVector* InitvVector();
 void vShowAllElement(struct vVector* _vec);
 void vAppend(struct vVector* _vec, int _val);
-bool vIsFull(struct vVector* _vec);
+int vIsFull(struct vVector* _vec);
 void vShrink(struct vVector* _vec);

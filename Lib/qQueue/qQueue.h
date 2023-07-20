@@ -7,17 +7,6 @@
 
 #endif
 
-
-#ifndef BOOL
-#define BOOL
-
-typedef enum{
-    no,
-    yes
-}bool;
-
-#endif
-
 //Content
 
 struct qQueue{
@@ -29,7 +18,7 @@ struct qQueue{
 
 struct qQueue* InitqQueue();
 void qPushBack(struct qQueue* _queue, int _val);
-bool qSpaceFull(struct qQueue* _queue);
-bool qIsEmpty(struct qQueue* _queue);
+int qSpaceFull(struct qQueue* _queue);
+int qIsEmpty(struct qQueue* _queue);
 void qShowAllElement(struct qQueue* _queue);
 int qPopFront(struct qQueue* _queue);

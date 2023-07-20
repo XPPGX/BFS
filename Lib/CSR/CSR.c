@@ -8,7 +8,7 @@ struct CSR* createCSR(struct Graph* _adjlist){
     int* CSR_E;
     int nodeID = 0;
     int tempNodeNum = 0;
-    if(_adjlist->startAtZero == yes){
+    if(_adjlist->startAtZero == 1){
         printf("Graph startAtZero = yes\n");
         CSR_V = (int*)malloc(sizeof(int) * (_adjlist->nodeNum + 1));
         nodeID = 0;
@@ -21,7 +21,7 @@ struct CSR* createCSR(struct Graph* _adjlist){
         nodeID = 1;
         tempNodeNum = _adjlist->nodeNum + 1;
     }
-    CSR_E = (int*)malloc(sizeof(int) * _adjlist->edgeNum);
+    CSR_E = (int*)malloc(sizeof(int) * _adjlist->edgeNum * 2);
     int indexCount = -1;
     printf("nodeID = %d, tempNodeNum = %d, indexCount = %d\n", nodeID, tempNodeNum, indexCount);
     for(; nodeID < tempNodeNum ; nodeID ++){

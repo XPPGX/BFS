@@ -42,8 +42,13 @@ void vAppend(struct vVector* _vec, int _val){
     #endif
 }
 
-bool vIsFull(struct vVector* _vec){
-    return (_vec->tail + 1) == _vec->size;
+int vIsFull(struct vVector* _vec){
+    if((_vec->tail + 1) == _vec->size){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 void vShrink(struct vVector* _vec){

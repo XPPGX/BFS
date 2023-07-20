@@ -1,23 +1,24 @@
 #include "SequentialBFS.h"
-
+#include <stdbool.h>
 //#define _DEBUG_
 
 void seqBFS(struct Graph* _graph, int _startNode){
+    printf("Start : Sequential BFS\n");
     struct qQueue* queue = InitqQueue();
     int currentNode = -1;
-    int* visited;
-    if(_graph->startAtZero == yes){
-        visited = (int*)calloc(_graph->nodeNum, sizeof(int));
+    bool* visited;
+    if(_graph->startAtZero == 1){
+        visited = (bool*)calloc(_graph->nodeNum, sizeof(bool));
     }
     else{
-        visited = (int*)calloc(_graph->nodeNum + 1, sizeof(int));
+        visited = (bool*)calloc(_graph->nodeNum + 1, sizeof(bool));
     }
 
     qPushBack(queue, _startNode);
     int neighborNode = -1;
     while(!qIsEmpty(queue)){
         currentNode = qPopFront(queue);
-        visited[currentNode] = 1;
+        visited[currentNode] = true;
         
         #ifdef _DEBUG_
         printf("%d, ", currentNode);
@@ -25,8 +26,8 @@ void seqBFS(struct Graph* _graph, int _startNode){
 
         for(int neighborIndex = 0 ; neighborIndex <= _graph->vertices[currentNode].neighbors->tail ; neighborIndex ++){
             neighborNode = _graph->vertices[currentNode].neighbors->dataArr[neighborIndex];
-            if(visited[neighborNode] == 0){
-                visited[neighborNode] = 1;
+            if(visited[neighborNode] == false){
+                visited[neighborNode] = true;
                 qPushBack(queue, neighborNode);
             }
         }
