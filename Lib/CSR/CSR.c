@@ -52,7 +52,7 @@ struct CSR* createCSR(struct Graph* _adjlist){
 void showCSR(struct CSR* csr){
     printf("show CSR...\n");
     int nodeID = 0;
-    if(csr->startAtZero == no){
+    if(csr->startAtZero == 0){
         nodeID ++;
     }
     int neighborNum = 0;
