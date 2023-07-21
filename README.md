@@ -9,22 +9,22 @@ $ chmod u+x *.sh
 ## Complie and run example.c in the folder "SequentialBFS"
 ```bash
 #Compile example.c in the folder "SequentailBFS"
-$ gcc example.c SequentialBFS.c ../Lib/qQueue/qQueue.c ../Lib/AdjList/AdjList.c ../Lib/vVector/vVector.c ../Lib/FileReader/FileReader.c -o a
-#即可生成 可執行檔 "a"
+$ ./complie.sh
+#It will create a executable file "a".
 
-#執行a要搭配Dataset
-#./a <datasetPath> <startNode>
-$./a karate.txt 2
+#execute a should go with the parameters like : datasetPath, mode, startNode, whereas the mode = 1 represent adpating CSR, mode = 0 adapting Adjlist.
+#./a <datasetPath> <mode> <startNode>
+$./a karate.txt 1 10 #an example of the command to perform sequential BFS
 ```
 
 # Parallel BFS
 - Note
-    - 在cuda file(*.cu)中，如果要include自己寫的library，要寫成下面的形式 <br>
-        -   ```c
-            //example
-            extern "C"{
-                #include "../../Lib/CSR/CSR.h"
-            }
-            ```
-## Reference
+    - In cuda file(*.cu), if we want to use the library written by ourself, it should be included as the form below.<br>
+        ```c
+        //example
+        extern "C"{
+            #include "../../Lib/CSR/CSR.h"
+        }
+        ```
+# Reference
 1. In "ParallelBFS/CudaBFS_2007/cudabfs2007.cu" https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
