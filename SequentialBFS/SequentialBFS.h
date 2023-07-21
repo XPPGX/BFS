@@ -20,5 +20,5 @@
 #include "../Lib/CSR/CSR.h"
 #endif
 //content
-void seqBFS_Adjlist(struct Graph* _graph, int _startNode);
-void seqBFS_CSR(struct CSR* _csr, int startNode);
+int* seqBFS_Adjlist(struct Graph* _graph, int _startNode);
+int* seqBFS_CSR(struct CSR* _csr, int startNode);
