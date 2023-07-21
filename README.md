@@ -1,6 +1,6 @@
 # Compile.sh
 ```bash
-#if perform compile.sh then got error : permission denied
+#if got error after performing compile.sh : permission denied
 #go to the folder that contain the compile.sh and use the command below
 $ chmod u+x *.sh
 ```
@@ -18,3 +18,11 @@ $./a karate.txt 2
 ```
 
 # Parallel BFS
+- Note
+    - 在cuda file(*.cu)中，如果要include自己寫的library，要寫成下面的形式 <br>
+        -   ```c
+            //example
+            extern "C"{
+                #include "../../Lib/CSR/CSR.h"
+            }
+            ```
