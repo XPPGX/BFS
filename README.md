@@ -12,7 +12,7 @@ $ chmod u+x *.sh
 $ ./complie.sh
 #It will create a executable file "a".
 
-#execute a should go with the parameters like : datasetPath, mode, startNode, whereas the mode = 1 represent adpating CSR, mode = 0 adapting Adjlist.
+#execute "a" should go with the parameters like : datasetPath, mode, startNode, whereas the mode = 1 represent adpating CSR, mode = 0 adapting Adjlist.
 #./a <datasetPath> <mode> <startNode>
 $./a karate.txt 1 10 #an example of the command to perform sequential BFS
 ```
