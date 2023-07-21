@@ -26,3 +26,5 @@ $./a karate.txt 2
                 #include "../../Lib/CSR/CSR.h"
             }
             ```
+## Reference
+1. In "ParallelBFS/CudaBFS_2007/cudabfs2007.cu" https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
