@@ -15,5 +15,10 @@
 #include "../Lib/qQueue/qQueue.h"
 #endif
 
+#ifndef cCSR
+#define cCSR
+#include "../Lib/CSR/CSR.h"
+#endif
 //content
-void seqBFS(struct Graph* _graph, int _startNode);
+void seqBFS_Adjlist(struct Graph* _graph, int _startNode);
+void seqBFS_CSR(struct CSR* _csr, int startNode);
