@@ -3,19 +3,20 @@
 //#define _DEBUG_
 
 struct CSR* createCSR(struct Graph* _adjlist){
+    printf("==============================\n");
     printf("CreateCSR...\n");
     int* CSR_V;
     int* CSR_E;
     int nodeID = 0;
     int tempNodeNum = 0;
     if(_adjlist->startAtZero == 1){
-        printf("Graph startAtZero = yes\n");
+        // printf("Graph startAtZero = yes\n");
         CSR_V = (int*)malloc(sizeof(int) * (_adjlist->nodeNum + 1));
         nodeID = 0;
         tempNodeNum = _adjlist->nodeNum;
     }
     else{
-        printf("Graph startAtZero = no\n");
+        // printf("Graph startAtZero = no\n");
         CSR_V = (int*)malloc(sizeof(int) * (_adjlist->nodeNum + 2));
         CSR_V[0] = -1;
         nodeID = 1;
@@ -23,7 +24,7 @@ struct CSR* createCSR(struct Graph* _adjlist){
     }
     CSR_E = (int*)malloc(sizeof(int) * _adjlist->edgeNum * 2);
     int indexCount = -1;
-    printf("nodeID = %d, tempNodeNum = %d, indexCount = %d\n", nodeID, tempNodeNum, indexCount);
+    // printf("nodeID = %d, tempNodeNum = %d, indexCount = %d\n", nodeID, tempNodeNum, indexCount);
     for(; nodeID < tempNodeNum ; nodeID ++){
         CSR_V[nodeID] = indexCount + 1;
 
@@ -36,7 +37,7 @@ struct CSR* createCSR(struct Graph* _adjlist){
             CSR_E[indexCount] = _adjlist->vertices[nodeID].neighbors->dataArr[neighborIndex];
         }
     }
-    printf("nodeID = %d, tempNodeNum = %d, indexCount = %d\n", nodeID, tempNodeNum, indexCount);
+    // printf("nodeID = %d, tempNodeNum = %d, indexCount = %d\n", nodeID, tempNodeNum, indexCount);
     CSR_V[nodeID] = _adjlist->edgeNum * 2;
 
     struct CSR* csr = (struct CSR*)malloc(sizeof(struct CSR));
@@ -45,7 +46,11 @@ struct CSR* createCSR(struct Graph* _adjlist){
     csr->csrVSize = tempNodeNum;
     csr->csrESize = _adjlist->edgeNum * 2;
     csr->startAtZero = _adjlist->startAtZero;
+    printf("csr->csrVSize = %d\n", csr->csrVSize);
+    printf("csr->csrESize = %d\n", csr->csrESize);
+    printf("csr->startAtZero = %d\n", csr->startAtZero);
     printf("Success : CreateCSR finish\n");
+    printf("==============================\n");
     return csr;
 }
 
