@@ -1,1 +1,1 @@
-gcc example.c SequentialBFS.c ../Lib/qQueue/qQueue.c ../Lib/CSR/CSR.c ../Lib/AdjList/AdjList.c ../Lib/vVector/vVector.c ../Lib/FileReader/FileReader.c -o a
+gcc example.c SequentialBFS.c ../Lib/tTime/tTime.c ../Lib/qQueue/qQueue.c ../Lib/CSR/CSR.c ../Lib/AdjList/AdjList.c ../Lib/vVector/vVector.c ../Lib/FileReader/FileReader.c -o a

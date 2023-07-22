@@ -2,8 +2,10 @@
 #include <stdbool.h>
 //#define _DEBUG_
 
+
 int* seqBFS_Adjlist(struct Graph* _graph, int _startNode){
     printf("[Start] Sequentail BFS, version = \"Adjlist\"\n");
+    
     struct qQueue* queue = InitqQueue();
 
     int currentNode = -1;
@@ -77,6 +79,6 @@ int* seqBFS_CSR(struct CSR* _csr, int _startNode){
         }
     }
     printf("\n");
-    printf("[Finished Successfully] Sequential BFS, version = \"CSR\"\n");
+    printf("[Finished Successfully] Sequential BFS, version = \"CSR\"\n\n");
     return cost;
 }
