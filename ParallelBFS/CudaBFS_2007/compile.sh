@@ -1,1 +1,1 @@
-nvcc cudabfs2007.cu ../../Lib/CSR/CSR.c ../../Lib/AdjList/AdjList.c ../../Lib/vVector/vVector.c ../../Lib/FileReader/FileReader.c -o a
+nvcc cudabfs2007.cu ../../Lib/CSR/CSR.c ../../Lib/tTime/tTime.c ../../Lib/AdjList/AdjList.c ../../Lib/vVector/vVector.c ../../Lib/FileReader/FileReader.c -o a
