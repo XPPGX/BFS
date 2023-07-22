@@ -11,21 +11,21 @@ struct CSR* createCSR(struct Graph* _adjlist){
     int tempNodeNum = 0;
     if(_adjlist->startAtZero == 1){
         // printf("Graph startAtZero = yes\n");
-        CSR_V = (int*)malloc(sizeof(int) * (_adjlist->nodeNum + 1));
+        tempNodeNum = _adjlist->nodeNum + 1;
+        CSR_V = (int*)malloc(sizeof(int) * tempNodeNum);
         nodeID = 0;
-        tempNodeNum = _adjlist->nodeNum;
     }
     else{
         // printf("Graph startAtZero = no\n");
-        CSR_V = (int*)malloc(sizeof(int) * (_adjlist->nodeNum + 2));
+        tempNodeNum = _adjlist->nodeNum + 2;
+        CSR_V = (int*)malloc(sizeof(int) * tempNodeNum);
         CSR_V[0] = -1;
         nodeID = 1;
-        tempNodeNum = _adjlist->nodeNum + 1;
     }
     CSR_E = (int*)malloc(sizeof(int) * _adjlist->edgeNum * 2);
     int indexCount = -1;
     // printf("nodeID = %d, tempNodeNum = %d, indexCount = %d\n", nodeID, tempNodeNum, indexCount);
-    for(; nodeID < tempNodeNum ; nodeID ++){
+    for(; nodeID < tempNodeNum - 1 ; nodeID ++){
         CSR_V[nodeID] = indexCount + 1;
 
         #ifdef _DEBUG_
@@ -61,7 +61,7 @@ void showCSR(struct CSR* csr){
         nodeID ++;
     }
     int neighborNum = 0;
-    for(; nodeID < csr->csrVSize ; nodeID ++){
+    for(; nodeID < csr->csrVSize - 1 ; nodeID ++){
         neighborNum = csr->csrV[nodeID + 1] - csr->csrV[nodeID];
         printf("neighborNum = %d, neighbor[%d] = {", neighborNum, nodeID);
         for(int i = 0 ; i < neighborNum ; i ++){
