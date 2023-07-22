@@ -7,4 +7,5 @@
 
 #include <sys/time.h>
 
+
 inline double seconds();
