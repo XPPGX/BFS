@@ -1,3 +1,7 @@
+/**
+ * @author XPPGX
+ * @date 2023/07/22
+*/
 #include "tTime.h"
 
 extern inline double seconds(){

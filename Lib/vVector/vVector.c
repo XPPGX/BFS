@@ -1,3 +1,7 @@
+/**
+ * @author XPPGX
+ * @date 2023/07/15
+*/
 #include "vVector.h"
 
 //#define _DEBUG_

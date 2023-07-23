@@ -1,3 +1,7 @@
+/**
+ * @author XPPGX
+ * @date 2023/07/22
+*/
 #ifndef COMMON
 #define COMMON
 #include <stdio.h>

@@ -1,3 +1,7 @@
+/***
+ * @author XPPGX
+ * @date 2023/07/15
+*/
 #include "SequentialBFS.h"
 #include <stdbool.h>
 //#define _DEBUG_

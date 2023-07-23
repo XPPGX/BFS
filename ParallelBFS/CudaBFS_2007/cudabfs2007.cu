@@ -1,7 +1,7 @@
 /***
- * @brief The code sites https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
  * @author XPPGX
  * @date 2023/07/21
+ * @cite The code sites https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
 */
 #ifndef COMMON
 #define COMMON

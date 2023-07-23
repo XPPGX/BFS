@@ -1,3 +1,8 @@
+/**
+ * @author XPPGX
+ * @date 2023/07/15
+*/
+
 #include "AdjList.h"
 
 //default the graph is undirected graph
