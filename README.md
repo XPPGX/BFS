@@ -1,3 +1,9 @@
+# BFS
+1. ### [Compile.sh](#compilesh)
+2. ### [Sequential BFS](#sequential-bfs)
+3. ### [Parallel BFS](#parallel-bfs)
+    - [CudaBFS_2007](#cudabfs_2007)
+
 # Compile.sh
 ```bash
 #if got error after performing compile.sh : permission denied
@@ -6,7 +12,6 @@ $ chmod u+x *.sh
 ```
 
 # Sequential BFS
-## Complie and run example.c in the folder "SequentialBFS"
 ```bash
 #Compile example.c in the folder "SequentailBFS"
 $ ./complie.sh
@@ -26,5 +31,15 @@ $./a karate.txt 1 10 #an example of the command to perform sequential BFS
             #include "../../Lib/CSR/CSR.h"
         }
         ```
-# Reference
-1. In "ParallelBFS/CudaBFS_2007/cudabfs2007.cu" https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
+- ### CudaBFS_2007
+    ```bash
+    #Compile cudabfs2007.cu in the folder CudaBFS_2007
+    $ ./compile.sh
+    #It will create a executable file "a".
+
+    #execute "a" should go with the parameters like : datasetPath, startNode.
+    #./a <datasetPath> <startNode>
+    $./a ../../Datasets/dblp.txt 10 #an example of the command to perform CudaBFS_2007.
+    ```
+    #### Reference(with hyperlink)
+    1. [cuda_bfs](https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu)
