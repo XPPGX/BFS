@@ -1,5 +1,5 @@
 /***
- * @brief This sites https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
+ * @brief The code sites https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu
  * @author XPPGX
  * @date 2023/07/21
 */
@@ -85,6 +85,11 @@ int main(int argc, char* argv[]){
     //compute the time of buliding Adjlist
     time1 = seconds();
     struct CSR* csr = createCSR(adjlist);
+    printf("neighbor[34] = {");
+    for(int neighborIndex = csr->csrV[34] ; neighborIndex < csr->csrV[35] ; neighborIndex ++){
+        printf("%d, ", csr->csrE[neighborIndex]);
+    }
+    printf("}\n");
     time2 = seconds();
     timeBuildCSR = time2 - time1;
     //compute the time of create csr
@@ -100,17 +105,25 @@ int main(int argc, char* argv[]){
     printf("device %d : %s\n", dev, deviceProp.name);
     #endif
     
+#pragma region threadLayout
+    dim3 block(32, 1);
+    dim3 grid((nodeSize + block.x - 1) / block.x, 1);
+    printf("block(x,y) = (%d,%d), grid(x,y) = (%d,%d)\n", block.x, block.y, grid.x, grid.y);
+#pragma endregion
+
     //compute time
 #pragma region copyData
     time1 = seconds();
-
+    //可以寫個kernel看資料到底有沒有複製到GPU裡面
     int* cudaCsrV;
     cudaMalloc((void**)&cudaCsrV, sizeof(int) * csr->csrVSize);
     cudaMemcpy(cudaCsrV, csr->csrV, sizeof(int) * csr->csrVSize, cudaMemcpyHostToDevice);
 
+
     int* cudaCsrE;
     cudaMalloc((void**)&cudaCsrE, sizeof(int) * csr->csrESize);
     cudaMemcpy(cudaCsrE, csr->csrE, sizeof(int) * csr->csrESize, cudaMemcpyHostToDevice);
+    
 
     bBool* hostFrontier = (bBool*)calloc(csr->csrVSize, sizeof(bBool));
     hostFrontier[startNode] = yes;
@@ -122,6 +135,7 @@ int main(int argc, char* argv[]){
     bBool* cudaVisited;
     cudaMalloc((void**)&cudaVisited, sizeof(bBool) * csr->csrVSize);
     cudaMemcpy(cudaVisited, hostVisited, sizeof(bBool) * csr->csrVSize, cudaMemcpyHostToDevice);
+    
 
     int* hostCost = (int*)calloc(csr->csrVSize, sizeof(int));
     int* cudaCost;
@@ -138,13 +152,6 @@ int main(int argc, char* argv[]){
     time2 = seconds();
 
     timeCopyData = time2 - time1;
-
-#pragma endregion
-
-#pragma region threadLayout
-    dim3 block(32, 1);
-    dim3 grid((nodeSize + block.x - 1) / block.x, 1);
-    printf("block(x,y) = (%d,%d), grid(x,y) = (%d,%d)\n", block.x, block.y, grid.x, grid.y);
 #pragma endregion
 
 #pragma region algo
@@ -162,7 +169,7 @@ int main(int argc, char* argv[]){
         #endif
 
         cudaMemcpy(cudaDone, hostDone, sizeof(bBool), cudaMemcpyHostToDevice);
-        cudaBfsKernel<<<block, grid>>>(cudaCsrV, cudaCsrE, cudaFrontier, cudaVisited, cudaCost, cudaDone, csr->csrVSize, count);
+        cudaBfsKernel<<<grid, block>>>(cudaCsrV, cudaCsrE, cudaFrontier, cudaVisited, cudaCost, cudaDone, csr->csrVSize, count);
         cudaMemcpy(hostDone, cudaDone, sizeof(bBool), cudaMemcpyDeviceToHost);
         
         #ifdef _DEBUG_
