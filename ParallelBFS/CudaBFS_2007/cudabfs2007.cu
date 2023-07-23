@@ -85,11 +85,6 @@ int main(int argc, char* argv[]){
     //compute the time of buliding Adjlist
     time1 = seconds();
     struct CSR* csr = createCSR(adjlist);
-    printf("neighbor[34] = {");
-    for(int neighborIndex = csr->csrV[34] ; neighborIndex < csr->csrV[35] ; neighborIndex ++){
-        printf("%d, ", csr->csrE[neighborIndex]);
-    }
-    printf("}\n");
     time2 = seconds();
     timeBuildCSR = time2 - time1;
     //compute the time of create csr
