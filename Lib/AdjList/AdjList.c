@@ -54,7 +54,6 @@ struct Graph* buildGraph(char* _datasetPath){
     //append first edge into adjlist
     vAppend(graph->vertices[val1].neighbors, val2);
     vAppend(graph->vertices[val2].neighbors, val1);
-
     //run over all remain edges
     for(int i = 1 ; i < graph->edgeNum ; i ++){
         fgets(row, rowSize, fptr);

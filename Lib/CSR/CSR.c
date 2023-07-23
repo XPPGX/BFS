@@ -49,7 +49,7 @@ struct CSR* createCSR(struct Graph* _adjlist){
     printf("csr->csrVSize = %d\n", csr->csrVSize);
     printf("csr->csrESize = %d\n", csr->csrESize);
     printf("csr->startAtZero = %d\n", csr->startAtZero);
-    printf("Success : CreateCSR finish\n");
+    printf("[Success] CreateCSR finish\n");
     printf("==============================\n");
     return csr;
 }
