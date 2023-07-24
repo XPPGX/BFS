@@ -1,8 +1,9 @@
 # BFS
-1. ### [Compile.sh](#compilesh)
-2. ### [Sequential BFS](#sequential-bfs)
-3. ### [Parallel BFS](#parallel-bfs)
+1. ### [Compile.sh](#compilesh-1)
+2. ### [Sequential BFS](#sequential-bfs-1)
+3. ### [Parallel BFS](#parallel-bfs-1)
     - [CudaBFS_2007](#cudabfs_2007)
+- ### [Appendix](#appendix)
 
 # Compile.sh
 ```bash
