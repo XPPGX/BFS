@@ -3,7 +3,9 @@
 2. ### [Sequential BFS](#sequential-bfs-1)
 3. ### [Parallel BFS](#parallel-bfs-1)
     - [CudaBFS_2007](#cudabfs_2007)
-- ### [Appendix](#appendix)
+
+- ### [Environment](#environment-1)
+- ### [Dataset Perprocess Tool](#dataset-perprocess-tool-1)
 
 # Compile.sh
 ```bash
@@ -52,7 +54,7 @@ $./a karate.txt 1 10 #an example of the command to perform sequential BFS
 - CPU : Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
 - GPU : GeForce GTX 1060 6GB
 
-# Appendix
+# Dataset Perprocess Tool
 - ConvertNodeID.cpp in "Datasets/UnusableDataset/"
     ```bash
     #function : It compacts nodeID so that no one nodeID will exceed the vertex number
