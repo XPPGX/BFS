@@ -41,5 +41,11 @@ $./a karate.txt 1 10 #an example of the command to perform sequential BFS
     #./a <datasetPath> <startNode>
     $./a ../../Datasets/dblp.txt 10 #an example of the command to perform CudaBFS_2007.
     ```
+    ![Alt text](image.png)
     #### Reference(with hyperlink)
     1. [cuda_bfs](https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu)
+
+# Experiments
+- Environment
+    - CPU : Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+    - GPU : GeForce GTX 1060 6GB
