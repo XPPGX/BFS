@@ -45,6 +45,7 @@ $./a karate.txt 1 10 #an example of the command to perform sequential BFS
     ![Alt text](image.png)
     #### Reference(with hyperlink)
     1. [cuda_bfs](https://github.com/siddharths2710/cuda_bfs/blob/master/cuda_bfs/kernel.cu)
+    2. [Paper](https://www.nvidia.com/content/cudazone/CUDABrowser/downloads/Accelerate_Large_Graph_Algorithms/HiPC.pdf)
 
 # Environment
 - CPU : Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
