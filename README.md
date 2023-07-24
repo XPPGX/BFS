@@ -50,3 +50,26 @@ $./a karate.txt 1 10 #an example of the command to perform sequential BFS
 # Environment
 - CPU : Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
 - GPU : GeForce GTX 1060 6GB
+
+# Appendix
+- ConvertNodeID.cpp in "Datasets/UnusableDataset/"
+    ```bash
+    #function : It compacts nodeID so that no one nodeID will exceed the vertex number
+
+    #compile ConvertNodeID.cpp
+    $g++ convertNodeID.cpp -o a
+    #perform convertNodeID
+    #$./a <InputDatasetPath> <OutputDatasetPath>
+    $./a com-livejournal.txt LiveJournal.txt
+    #It will output a file of dataset with compacted nodeID named "LiveJournal.txt"
+    ```
+- ChangeDataset.cpp in "Datasets/UnusableDataset/"
+    ```bash
+    #function : It deletes the first lines and writes the nodeNum and edgeNum at the head line.
+
+    #compile ChangeDataset.cpp
+    $g++ ChangeDataset.cpp -o a
+    #perform ChangeDataset
+    #$./a <datasetPath> <number of lines> <nodeNum> <edgeNum>
+    $./a com-livejournal.txt 4 <3997962> <34681189>
+    ```
