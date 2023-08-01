@@ -69,7 +69,7 @@ int* seqBFS_CSR(struct CSR* _csr, int _startNode){
     while(!qIsEmpty(queue)){
         currentNode = qPopFront(queue);
         visited[currentNode] = true;
-
+        iterTime = cost[currentNode];
         #ifdef _DEBUG_
         printf("%d, ", cuurentNode);
         #endif
@@ -79,13 +79,11 @@ int* seqBFS_CSR(struct CSR* _csr, int _startNode){
             if(visited[neighborNode] == false){
                 visited[neighborNode] = true;
                 cost[neighborNode] = cost[currentNode] + 1;
-                if(iterTime < cost[neighborNode]){
-                    iterTime = cost[neighborNode];
-                }
                 qPushBack(queue, neighborNode);
             }
         }
     }
+    iterTime++;
     printf("\n");
     printf("Iteration times = %d\n", iterTime);
     printf("[Finished Successfully] Sequential BFS, version = \"CSR\"\n\n");
