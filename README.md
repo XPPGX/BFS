@@ -73,6 +73,6 @@ $./a karate.txt 1 10 #an example of the command to perform sequential BFS
     #compile ChangeDataset.cpp
     $g++ ChangeDataset.cpp -o a
     #perform ChangeDataset
-    #$./a <datasetPath> <number of lines> <nodeNum> <edgeNum>
-    $./a com-livejournal.txt 4 <3997962> <34681189>
+    #$./a <datasetReadPath> <datasetWritePath> <number of lines> <nodeNum> <edgeNum>
+    $./a com-livejournal.txt LiveJournal.txt 4 3997962 34681189
     ```
