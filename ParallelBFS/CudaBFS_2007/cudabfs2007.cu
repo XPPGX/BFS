@@ -12,6 +12,8 @@
 
 //content
 
+#define verifyAns
+
 //include C library
 extern "C"{
     #ifndef cCSR
@@ -23,6 +25,19 @@ extern "C"{
     #define tTime
     #include "../../Lib/tTime/tTime.h"
     #endif
+    
+    #ifdef verifyAns
+    //For Verify answer
+    #ifndef SEQUENTIAL_BFS
+    #define SEQUENTIAL_BFS
+    #include "../../SequentialBFS/SequentialBFS.h"
+    #endif
+
+    #ifndef QQueue
+    #define QQueue
+    #include "../../Lib/qQueue/qQueue.h"
+    #endif
+    #endif //verifyAns
 }
 
 //define
@@ -40,7 +55,7 @@ __global__ void cudaBfsKernel(int* _csrV, int* _csrE, bBool* _frontier, bBool* _
     int tid = threadIdx.x + blockIdx.x * blockDim.x;
     int neighbor = -1;
     if(tid < _nodeSize){
-        if(_frontier[tid] == yes && _visited[tid] == no){
+        if(_frontier[tid] == yes && _visited[tid] == no && _cost[tid] == level){
             
             #ifdef _DEBUG_
             printf("%d, ", tid); // tid == nodeID
@@ -48,14 +63,14 @@ __global__ void cudaBfsKernel(int* _csrV, int* _csrE, bBool* _frontier, bBool* _
 
             _frontier[tid] = no;
             _visited[tid] = yes;
-            _cost[tid] = level;
             __syncthreads();
 
             //visit neighbor
             for(int neighborIndex = _csrV[tid] ; neighborIndex < _csrV[tid + 1] ; neighborIndex ++){
                 neighbor = _csrE[neighborIndex];
-                if(_visited[neighbor] == no){
+                if(_visited[neighbor] == no && _frontier[neighbor] == no && _cost[neighbor] == 0){
                     _frontier[neighbor] = yes;
+                    _cost[neighbor] = level + 1;
                     *_done = no;
                 }
             }
@@ -80,6 +95,7 @@ int main(int argc, char* argv[]){
     //Time counter start
     startTime = seconds();
     struct Graph* adjlist = buildGraph(datasetPath);
+    // showAdjList(adjlist);
     time1 = seconds();
     timeBuildAdjlist = time1 - startTime;
     //compute the time of buliding Adjlist
@@ -142,11 +158,13 @@ int main(int argc, char* argv[]){
     bBool* cudaDone;
     cudaMalloc((void**)&cudaDone, sizeof(bBool));
     cudaMemcpy(cudaDone, hostDone, sizeof(bBool), cudaMemcpyHostToDevice);
-    int count = 0;
+
+    int iterTime = 0;
 
     time2 = seconds();
-
     timeCopyData = time2 - time1;
+    // printf("Press Enter Key to continue...");
+    // fgetc(stdin);
 #pragma endregion
 
 #pragma region algo
@@ -160,18 +178,17 @@ int main(int argc, char* argv[]){
         *hostDone = yes;
 
         #ifdef _DEBUG_
-        printf("\ncount = %d, { ", count);
+        printf("\niterTime = %d, { ", iterTime);
         #endif
 
         cudaMemcpy(cudaDone, hostDone, sizeof(bBool), cudaMemcpyHostToDevice);
-        cudaBfsKernel<<<grid, block>>>(cudaCsrV, cudaCsrE, cudaFrontier, cudaVisited, cudaCost, cudaDone, csr->csrVSize, count);
+        cudaBfsKernel<<<grid, block>>>(cudaCsrV, cudaCsrE, cudaFrontier, cudaVisited, cudaCost, cudaDone, csr->csrVSize, iterTime);
         cudaMemcpy(hostDone, cudaDone, sizeof(bBool), cudaMemcpyDeviceToHost);
-        
         #ifdef _DEBUG_
         printf("}");
         #endif
 
-        count ++;
+        iterTime ++;
     }
     printf("\n");
 
@@ -186,7 +203,7 @@ int main(int argc, char* argv[]){
     timeCopyData = timeCopyData + (time2 - time1);
 #pragma endregion
 
-    printf("Iteration times = %d\n", count);
+    printf("Iteration times = %d\n", iterTime);
 
     #ifdef showCost
     printf("Cost :\n");
@@ -208,4 +225,20 @@ int main(int argc, char* argv[]){
     printf("[Execution Time] ParallelBFS algo = %9f\n", timeParallelBFS);
     printf("[Execution Time] TotalTime        = %9f\n", timeTotal);
     printf("============================================================\n");
+
+
+    #ifdef verifyAns
+    int* seqCost = seqBFS_CSR(csr, startNode);
+    bBool correctFlag = yes; //"no"代表答案錯誤，"yes"代表答案對
+    for(int i = 0 ; i < csr->csrVSize ; i ++){
+        if(seqCost[i] != hostCost[i]){
+            printf("[Verify ans][Wrong] : seqCost[%d] = %d, cudaCost[%d] = %d\n", i, seqCost[i], i, hostCost[i]);
+            correctFlag = no;
+            break;
+        }
+    }
+    if(correctFlag == yes){
+        printf("[Verify ans][Correct]!\n");
+    }
+    #endif
 }
