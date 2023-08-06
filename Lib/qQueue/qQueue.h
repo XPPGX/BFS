@@ -21,6 +21,7 @@ struct qQueue{
 };
 
 struct qQueue* InitqQueue();
+void qInitResize(struct qQueue* _queue, int _size);
 void qPushBack(struct qQueue* _queue, int _val);
 int qSpaceFull(struct qQueue* _queue);
 int qIsEmpty(struct qQueue* _queue);

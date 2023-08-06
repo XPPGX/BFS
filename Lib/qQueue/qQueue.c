@@ -15,6 +15,12 @@ struct qQueue* InitqQueue(){
     return queue;
 }
 
+void qInitResize(struct qQueue* _queue, int _size){
+    free(_queue->dataArr);
+    _queue->dataArr = (int*)malloc(sizeof(int) * _size);
+    _queue->size = _size;
+}
+
 void qPushBack(struct qQueue* _queue, int _val){
     if(qSpaceFull(_queue)){
         

@@ -2,6 +2,9 @@
 
 int main(){
     struct qQueue* queue = InitqQueue();
+    printf("dataArr.addr = %p, queueSize = %d\n", queue->dataArr, queue->size);
+    qInitResize(queue, 20);
+    printf("dataArr.addr = %p, queueSize = %d\n", queue->dataArr, queue->size);
     for(int i = 0 ; i < 10 ; i ++){
         qPushBack(queue, i * 10);
     }
